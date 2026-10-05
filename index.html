@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel Ejecutivo – Acceso a la Información Pública | SAT Lima</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#eef2f8;--card:#fff;--tx:#0f1b3d;--mu:#5d6985;--bd:#e0e6f0;--pr:#1e4fd6;--pr2:#e8eefc;--ok:#15a34a;--wa:#e8930c;--ko:#d92d3a;--grid:rgba(93,105,133,.15);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1122;--card:#121b31;--tx:#e8edf8;--mu:#95a2bd;--bd:#223250;--pr:#6c9bff;--pr2:#1a2a52;--grid:rgba(149,162,189,.15)}}
+:root[data-theme="dark"]{--bg:#0a1122;--card:#121b31;--tx:#e8edf8;--mu:#95a2bd;--bd:#223250;--pr:#6c9bff;--pr2:#1a2a52;--grid:rgba(149,162,189,.15)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 "Inter","Segoe UI",system-ui,sans-serif}
+.w{max-width:1280px;margin:0 auto;padding:18px 16px 40px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-end;margin-bottom:14px}
+h1{font-size:clamp(20px,3vw,28px);margin:0;letter-spacing:-.02em}h1 small{display:block;font-size:13px;font-weight:500;color:var(--mu);margin-top:4px}
+h3{font-size:14.5px;margin:0 0 10px;font-weight:650}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;box-shadow:0 1px 2px rgba(15,27,61,.05)}
+.bar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin-bottom:14px}
+.fl{font-size:12.5px;color:var(--mu);display:flex;flex-direction:column;gap:5px}
+.seg{display:flex;background:var(--bg);border-radius:9px;padding:3px;gap:2px}
+.seg button{border:0;background:none;color:var(--mu);padding:6px 11px;border-radius:7px;font:inherit;font-size:13px;cursor:pointer}
+.seg button.on{background:var(--pr);color:#fff;font-weight:600}
+select,.rs{font:inherit;font-size:13px;padding:6px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+.rs{cursor:pointer;background:var(--pr2);color:var(--pr);border:0;font-weight:600;padding:8px 12px}
+button:focus-visible,select:focus-visible{outline:2px solid var(--pr);outline-offset:2px}
+.g{display:grid;gap:14px;margin-bottom:14px}
+.k{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.c2{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.kp .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;background:var(--pr2)}
+.kp b{display:block;font-size:28px;letter-spacing:-.02em;margin-top:8px}.kp span{font-size:12.5px;color:var(--mu)}
+.dl{font-size:12px;font-weight:600;margin-top:3px}.up{color:var(--ok)}.dn{color:var(--ko)}
+.cv{position:relative;height:250px}.gz{position:relative;height:170px}
+.gc{position:absolute;left:0;right:0;bottom:6px;text-align:center}.gc b{font-size:32px}.gc div{font-size:12px;color:var(--mu)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{padding:5px 11px;border-radius:99px;font-size:12.5px;font-weight:600;background:var(--card);border:1px solid var(--bd)}
+.pb{margin:10px 0}.pb div.t{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.pb .tr{height:10px;border-radius:9px;background:var(--bg);overflow:hidden}.pb .fi{height:100%;border-radius:9px;transition:width .5s}
+.hm{overflow-x:auto}.hm table,.tb table{border-collapse:separate;border-spacing:3px;width:100%;font-size:12px}
+.hm td{text-align:center;padding:9px 4px;border-radius:6px;color:#fff;font-weight:600;min-width:52px}.hm th{font-weight:600;color:var(--mu);font-size:11.5px;text-align:center}.hm td.rl{background:none;color:var(--tx);text-align:left;white-space:nowrap}
+.an h4{margin:12px 0 6px;font-size:13.5px}.an ul{margin:0;padding-left:18px}.an li{margin:4px 0;font-size:13.5px}.an p{margin:0;font-size:14px}
+.tb{overflow-x:auto}.tb table{border-spacing:0;font-size:13px}.tb th,.tb td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--bd);white-space:nowrap}
+.tb th{cursor:pointer;color:var(--mu);font-weight:600;user-select:none}.tb th:first-child,.tb td:first-child{text-align:left}
+.pill{padding:2px 9px;border-radius:99px;color:#fff;font-weight:600;font-size:12px}
+.ft{font-size:12px;color:var(--mu);text-align:center;margin-top:10px}
+</style></head><body><div class="w">
+<header><h1>Panel Ejecutivo – Acceso a la Información Pública<small>SAT Lima · Octubre 2025 a septiembre 2026 · Meta: atención en plazo superior a 90 %</small></h1></header>
+<div class="card bar">
+ <div class="fl">Canal<div class="seg" id="sc"><button data-v="all" class="on">Todos</button><button data-v="SAIP">SAIP</button><button data-v="MP">Mesa de Partes</button></div></div>
+ <div class="fl">Desde<select id="fa"></select></div><div class="fl">Hasta<select id="fb"></select></div>
+ <div class="fl">Estado (gráfico de volumen)<div class="seg" id="ss"><button data-v="all" class="on">Todas</button><button data-v="o">En plazo</button><button data-v="l">Fuera de plazo</button></div></div>
+ <button class="rs" id="rs">Restablecer filtros</button>
+</div>
+<div class="chips" id="chips"></div>
+<div class="g k" id="kpis"></div>
+<div class="g c2">
+ <div class="card"><h3>Cumplimiento global frente a la meta</h3><div class="gz"><canvas id="gauge"></canvas><div class="gc"><b id="gv"></b><div id="gt"></div></div></div><div id="pbs"></div></div>
+ <div class="card an"><h3>Análisis automático</h3><div id="an"></div></div>
+</div>
+<div class="g c2">
+ <div class="card"><h3 id="t1">Volumen mensual</h3><div class="cv"><canvas id="c1"></canvas></div></div>
+ <div class="card"><h3 id="t2">Cumplimiento mensual</h3><div class="cv"><canvas id="c2"></canvas></div></div>
+ <div class="card"><h3>En plazo vs. fuera de plazo por mes</h3><div class="cv"><canvas id="c3"></canvas></div></div>
+ <div class="card"><h3>Carga de ingreso frente a cumplimiento</h3><div class="cv"><canvas id="c4"></canvas></div></div>
+ <div class="card"><h3>Distribución por canal</h3><div class="cv"><canvas id="c5"></canvas></div></div>
+ <div class="card"><h3>Meses con más solicitudes fuera de plazo</h3><div class="cv"><canvas id="c6"></canvas></div></div>
+ <div class="card"><h3>Fuera de plazo por canal</h3><div class="cv"><canvas id="c7"></canvas></div></div>
+ <div class="card"><h3>Mapa de calor: % en plazo (mes × canal)</h3><div class="hm" id="hm"></div></div>
+</div>
+<div class="card tb"><h3>Detalle mensual (clic en una columna para ordenar)</h3><table id="tb"></table></div>
+<div class="ft">Fuente: registro de solicitudes SAIP y Mesa de Partes, SAT Lima. Los porcentajes se calculan sobre cifras absolutas.</div>
+</div>
+<script>
+const M=['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26'];
+const D={SAIP:{t:[999,816,718,1029,932,1022,1173,1032,1247,1223,1611,1219],o:[902,770,708,1028,861,830,854,896,1081,982,1554,1203],l:[97,46,10,1,71,192,319,136,166,241,57,14],n:[0,0,0,0,0,0,0,0,0,0,0,2],p:[0,0,0,0,0,0,0,0,0,0,0,132]},
+MP:{t:[1325,1341,935,1197,991,1273,1316,1212,970,692,906,820],o:[1266,1294,921,1195,971,1102,1027,1109,777,388,832,807],l:[59,47,14,2,20,171,291,103,193,304,74,13],n:Array(12).fill(0),p:Array(12).fill(0)}};
+const NM={SAIP:'SAIP',MP:'Mesa de Partes'},CL={SAIP:'#1e4fd6',MP:'#0ea5a4'};
+const f={ch:'all',a:0,b:11,st:'all'},C={};let sk='i',sd=1;
+const fm=n=>Math.round(n).toLocaleString('es-PE'),pc=x=>(x*100).toFixed(1).replace('.',',')+' %';
+const chs=()=>f.ch=='all'?['SAIP','MP']:[f.ch];
+const sm=(k,i,cs=chs())=>cs.reduce((s,c)=>s+D[c][k][i],0);
+const col=p=>p>.9?'#15a34a':p>=.8?'#e8930c':'#d92d3a';
+const R=a=>a.reduce((x,y)=>x+y,0);
+const cs=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const mk=(id,cfg)=>{if(C[id])C[id].destroy();cfg.options=Object.assign({responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}},cfg.options||{});C[id]=new Chart(document.getElementById(id),cfg)};
+const sc=(extra={})=>({x:{grid:{display:false}},y:{grid:{color:cs('--grid')},beginAtZero:true},...extra});
+['fa','fb'].forEach((id,j)=>{document.getElementById(id).innerHTML=M.map((m,i)=>`<option value="${i}">${m}</option>`).join('');document.getElementById(id).value=j?11:0;
+ document.getElementById(id).onchange=e=>{f[j?'b':'a']=+e.target.value;if(f.a>f.b){if(j)f.a=f.b;else f.b=f.a;fa.value=f.a;fb.value=f.b}render()}});
+function seg(id,key){document.getElementById(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;f[key]=b.dataset.v;[...e.currentTarget.children].forEach(x=>x.classList.toggle('on',x===b));render()}}
+seg('sc','ch');seg('ss','st');
+rs.onclick=()=>{Object.assign(f,{ch:'all',a:0,b:11,st:'all'});fa.value=0;fb.value=11;['sc','ss'].forEach(id=>[...document.getElementById(id).children].forEach((x,i)=>x.classList.toggle('on',i==0)));render()};
+function render(){
+ Chart.defaults.color=cs('--mu');Chart.defaults.font.family='Inter,Segoe UI,system-ui,sans-serif';
+ const I=[];for(let i=f.a;i<=f.b;i++)I.push(i);const L=I.map(i=>M[i]);
+ const A=k=>I.map(i=>sm(k,i)),T=A('t'),O=A('o'),Lt=A('l'),N=A('n'),P=A('p');
+ const tt=R(T),to=R(O),tl=R(Lt),tn=R(N),tp=R(P),pct=tt?to/tt:0,PM=I.map((_,j)=>T[j]?O[j]/T[j]:0);
+ const dl=(a,pp)=>{if(a.length<2)return'';const x=a[a.length-1],y=a[a.length-2];const d=pp?(x-y)*100:(y?(x-y)/y*100:0);const up=pp?d>=0:d>=0;return`<div class="dl ${up?'up':'dn'}">${up?'▲':'▼'} ${Math.abs(d).toFixed(1).replace('.',',')}${pp?' pp':' %'} vs. mes previo</div>`};
+ const KP=[['📥','Solicitudes presentadas',fm(tt),dl(T)],['✅','Atendidas en plazo',pc(pct),dl(PM,1)],['⏱️','Atendidas fuera de plazo',fm(tl),dl(Lt)],['🚫','No atendidas',fm(tn),''],['🔄','En proceso',fm(tp),''],['📊','Promedio mensual',fm(tt/I.length),'']];
+ kpis.innerHTML=KP.map(k=>`<div class="card kp"><div class="ic">${k[0]}</div><b>${k[2]}</b><span>${k[1]}</span>${k[3]}</div>`).join('');
+ // alertas
+ const crit=I.filter((i,j)=>PM[j]<=.9);
+ chips.innerHTML=I.map((i,j)=>PM[j]<=.9?`<span class="chip">${PM[j]<.8?'🔴':'🟡'} ${M[i]} · ${pc(PM[j])}</span>`:'').join('')+(tn||tp?`<span class="chip">🟡 ${fm(tn)} no atendidas · ${fm(tp)} en proceso</span>`:'')+(pct>.9?'<span class="chip">🟢 Meta superior a 90 % cumplida</span>':'')||'';
+ // gauge
+ const gc=col(pct);gv.textContent=pc(pct);gv.style.color=gc;gt.textContent=pct>.9?'Cumple la meta (>90 %)':pct>=.8?'Por debajo de la meta (>90 %)':'Nivel crítico';
+ mk('gauge',{type:'doughnut',data:{datasets:[{data:[pct,1-pct],backgroundColor:[gc,cs('--grid')],borderWidth:0}]},options:{rotation:-90,circumference:180,cutout:'78%',plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+ pbs.innerHTML=chs().map(c=>{const t=R(I.map(i=>D[c].t[i])),o=R(I.map(i=>D[c].o[i])),p=t?o/t:0;return`<div class="pb"><div class="t"><span>${NM[c]}</span><b>${pc(p)}</b></div><div class="tr"><div class="fi" style="width:${p*100}%;background:${col(p)}"></div></div></div>`}).join('');
+ // gráficos
+ const sl={all:['t','Solicitudes presentadas'],o:['o','Atendidas en plazo'],l:['l','Atendidas fuera de plazo']}[f.st];
+ t1.textContent=sl[1]+' por mes';
+ mk('c1',{type:'line',data:{labels:L,datasets:chs().map(c=>({label:NM[c],data:I.map(i=>D[c][sl[0]][i]),borderColor:CL[c],backgroundColor:CL[c],tension:.35,pointRadius:3}))},options:{scales:sc()}});
+ const mi=PM.indexOf(Math.min(...PM));t2.textContent=`Cumplimiento: mínimo de ${pc(PM[mi])} en ${L[mi]}`;
+ mk('c2',{type:'line',data:{labels:L,datasets:[...chs().map(c=>({label:NM[c],data:I.map(i=>D[c].o[i]/D[c].t[i]*100),borderColor:CL[c],backgroundColor:CL[c]+'22',fill:true,tension:.35,pointRadius:3})),{label:'Meta 90 %',data:L.map(()=>90),borderColor:'#15a34a',borderDash:[6,5],pointRadius:0,borderWidth:1.5}]},options:{scales:sc({y:{min:40,max:100,grid:{color:cs('--grid')},ticks:{callback:v=>v+'%'}}})}});
+ mk('c3',{type:'bar',data:{labels:L,datasets:[{label:'En plazo',data:O,backgroundColor:'#15a34a'},{label:'Fuera de plazo',data:Lt,backgroundColor:'#e8930c'},{label:'No atendidas',data:N,backgroundColor:'#d92d3a'}]},options:{scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,grid:{color:cs('--grid')}}}}});
+ mk('c4',{data:{labels:L,datasets:[{type:'bar',label:'Solicitudes',data:T,backgroundColor:'#1e4fd655',yAxisID:'y'},{type:'line',label:'% en plazo',data:PM.map(x=>x*100),borderColor:'#d92d3a',backgroundColor:'#d92d3a',tension:.35,yAxisID:'y1'}]},options:{scales:{x:{grid:{display:false}},y:{grid:{color:cs('--grid')},beginAtZero:true},y1:{position:'right',min:40,max:100,grid:{display:false},ticks:{callback:v=>v+'%'}}}}});
+ mk('c5',{type:'doughnut',data:{labels:chs().map(c=>NM[c]+' · '+pc(R(I.map(i=>D[c].o[i]))/R(I.map(i=>D[c].t[i])))),datasets:[{data:chs().map(c=>R(I.map(i=>D[c].t[i]))),backgroundColor:chs().map(c=>CL[c]),borderWidth:0}]},options:{cutout:'62%'}});
+ const rk=I.map((i,j)=>[L[j],Lt[j]]).sort((a,b)=>b[1]-a[1]).slice(0,6);
+ mk('c6',{type:'bar',data:{labels:rk.map(r=>r[0]),datasets:[{label:'Fuera de plazo',data:rk.map(r=>r[1]),backgroundColor:'#d92d3a'}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:cs('--grid')}},y:{grid:{display:false}}}}});
+ mk('c7',{type:'bar',data:{labels:L,datasets:chs().map(c=>({label:NM[c],data:I.map(i=>D[c].l[i]),backgroundColor:CL[c]}))},options:{scales:sc()}});
+ // mapa de calor
+ const hc=p=>`hsl(${Math.max(0,Math.min(1,(p-.5)/.5))*125} 62% 40%)`;
+ const rows=[...chs().map(c=>[NM[c],c]),...(f.ch=='all'?[['Total',null]]:[])];
+ hm.innerHTML='<table><tr><th></th>'+L.map(l=>`<th>${l}</th>`).join('')+'</tr>'+rows.map(r=>`<tr><td class="rl">${r[0]}</td>`+I.map(i=>{const p=r[1]?D[r[1]].o[i]/D[r[1]].t[i]:sm('o',i)/sm('t',i);return`<td style="background:${hc(p)}">${(p*100).toFixed(0)}%</td>`}).join('')+'</tr>').join('')+'</table>';
+ // análisis
+ const bi=PM.indexOf(Math.max(...PM)),pk=T.indexOf(Math.max(...T)),h=Math.floor(I.length/2);
+ const ra=(a,b)=>{const t=R(T.slice(a,b));return t?R(O.slice(a,b))/t:0};
+ const hi=[`<li>Mejor mes: <b>${L[bi]}</b> (${pc(PM[bi])}). Peor mes: <b>${L[mi]}</b> (${pc(PM[mi])}).</li>`,`<li>Mayor demanda: <b>${L[pk]}</b> con ${fm(T[pk])} solicitudes.</li>`];
+ if(f.ch=='all'){const q=c=>R(I.map(i=>D[c].o[i]))/R(I.map(i=>D[c].t[i]));const w=q('SAIP')>=q('MP')?'SAIP':'MP';hi.push(`<li>Mejor desempeño del periodo: <b>${NM[w]}</b> (${pc(q(w))}), con ${((Math.abs(q('SAIP')-q('MP')))*100).toFixed(1).replace('.',',')} pp de ventaja.</li>`)}
+ if(h>0){const d=(ra(h,I.length)-ra(0,h))*100;hi.push(`<li>Tendencia: la segunda mitad del periodo ${d>=0?'mejora':'empeora'} ${Math.abs(d).toFixed(1).replace('.',',')} pp frente a la primera.</li>`)}
+ const al=[];if(crit.length)al.push(`<li>No cumplen la meta (90 % o menos) en: <b>${crit.map(i=>M[i]).join(', ')}</b>.</li>`);
+ if(tn||tp)al.push(`<li>Hay <b>${fm(tn)}</b> solicitudes no atendidas y <b>${fm(tp)}</b> en proceso (septiembre 2026, SAIP). Conviene validar la cifra con el área responsable.</li>`);if(!al.length)al.push('<li>Sin alertas en la selección actual.</li>');
+ const rc=[];if(pct<=.9)rc.push(`<li>Cerrar la brecha de ${((.9-pct)*100).toFixed(1).replace('.',',')} pp para superar la meta de 90 %.</li>`);
+ if(crit.length)rc.push('<li>Revisar las causas de los meses críticos (carga, rotación de personal, trámites internos) y fijar un plan de contingencia.</li>');
+ rc.push(`<li>Anticipar capacidad de respuesta en meses de alta demanda como ${L[pk]}.</li>`);if(tn||tp)rc.push('<li>Dar seguimiento inmediato a los pendientes para evitar vencimientos.</li>');if(pct>.9)rc.push('<li>Mantener las prácticas actuales y documentarlas como estándar.</li>');
+ an.innerHTML=`<p>Entre <b>${L[0]}</b> y <b>${L[L.length-1]}</b> se presentaron <b>${fm(tt)}</b> solicitudes y <b>${pc(pct)}</b> se atendió en plazo (${pct>.9?'cumple':'no cumple'} la meta de superar el 90 %). Hubo <b>${fm(tl)}</b> atenciones fuera de plazo.</p><h4>Hallazgos clave</h4><ul>${hi.join('')}</ul><h4>Alertas</h4><ul>${al.join('')}</ul><h4>Recomendaciones</h4><ul>${rc.join('')}</ul>`;
+ // tabla
+ const rw=I.map((i,j)=>({i,t:T[j],o:O[j],l:Lt[j],n:N[j],p:P[j],pc:PM[j]})).sort((a,b)=>(a[sk]-b[sk])*sd);
+ const H=[['i','Mes'],['t','Presentadas'],['o','En plazo'],['l','Fuera de plazo'],['n','No atendidas'],['p','En proceso'],['pc','% en plazo']];
+ tb.innerHTML='<tr>'+H.map(h=>`<th data-k="${h[0]}">${h[1]}${sk==h[0]?(sd>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>'+rw.map(r=>`<tr><td>${M[r.i]}</td><td>${fm(r.t)}</td><td>${fm(r.o)}</td><td>${fm(r.l)}</td><td>${fm(r.n)}</td><td>${fm(r.p)}</td><td><span class="pill" style="background:${col(r.pc)}">${pc(r.pc)}</span></td></tr>`).join('');
+ tb.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sd=sk==k?-sd:1;sk=k;render()});
+}
+render();
+</script></body></html>
